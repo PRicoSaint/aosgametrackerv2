@@ -1,0 +1,21 @@
+.behind {
+    position: absolute;
+  }
+
+  .center {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-size: 18px;
+    color:brown;
+  }
+  
+  .bgimage { 
+    width: 100%;
+    height: auto;
+    opacity: 0;
+  }
+  h1{
+    color: aliceblue
+  }

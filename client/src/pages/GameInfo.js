@@ -1,9 +1,10 @@
 import React, { useState, useEffect } from 'react';
-import {  Container, Col, Form, Button, Card, Modal, Tab, Spinner } from 'react-bootstrap';
+import {  Container, Col, Button, Card, Modal, Spinner, Row } from 'react-bootstrap';
 import { Link, useParams } from 'react-router-dom';
-
+import './GameHistory.css'
 import Auth from '../utils/auth';
 import { getGame } from '../utils/API';
+import white_warhammer from '../images/white_warhammer.svg'
 
 import NewRound from '../components/NewRound';
 
@@ -73,14 +74,15 @@ export default function GameInfo() {
   // Add hammering gif here
     if (!gameDataLength) {
       return <Spinner animation="border" role="status">
-      <span className="visually-hidden">Loading...</span>
+          <img src={white_warhammer} style={{width:'25px', height: '25px'}} />
     </Spinner>;
     }
 
     return (
         <div>
-              <Card key={gameData._id} border='dark'>
-                <Card.Body>
+          <Row>
+              <Card style={{ width: '30rem' }} className="mb-2 cardcenter" key={gameData._id} border='dark'>
+                <Card.Body >
                   <Card.Title>{gameData.name}</Card.Title>
                   <p>Battleplan: {gameData.battleplan}</p>
                   <Card.Text><ul>
@@ -99,6 +101,7 @@ export default function GameInfo() {
                   </Button>
                 </Card.Body>
               </Card>
+              </Row>
               <Container>
           <h1> Saved Rounds</h1>
         </Container>
@@ -108,11 +111,11 @@ export default function GameInfo() {
             ? `Viewing ${gameData.rounds.length} saved ${gameData.rounds.length === 1 ? 'round' : 'rounds'}:`
             : 'You have no saved rounds! Click the button to add a round!'}
         </h2>
-        <Col>
+        <Row xs={1} md={2} className="g-4">
           {gameData.rounds.map((round) => {
             return (
-              <Card key={round.roundNumber} border='dark'>
-                <Card.Body>
+              <Card style={{ width: '18rem' }} className="mb-2" key={round.roundNumber} border='dark'>
+                <Card.Body >
                   <Card.Title>Round {round.roundNumber}</Card.Title>
                   <p>Battle Tactic Chosen: {round.battletactic}{round.btcomplete ? "✅" : "❌" }</p>
                   <Card.Text><ul>
@@ -122,9 +125,10 @@ export default function GameInfo() {
                    </ul></Card.Text>
                 </Card.Body>
               </Card>
+              
             );
           })}
-        </Col>
+          </Row>
       </Container>
       
             <Modal

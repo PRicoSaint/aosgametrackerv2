@@ -83,7 +83,7 @@ const GameCreation = () => {
  
       <h1>Enter New Game Information!</h1>
     <Container>
-      <Form noValidate validated={validated} onSubmit={handleFormSubmit}>
+      <Form className="mb-3" noValidate validated={validated} onSubmit={handleFormSubmit}>
         {/* show alert if server response is bad */}
         <Alert dismissible onClose={() => setShowAlert(false)} show={showAlert} variant='danger'>
           Something went wrong with game creation!
@@ -92,7 +92,7 @@ const GameCreation = () => {
           Game Successfully created!
         </Alert>
 
-        <Form.Group>
+        <Form.Group >
           <Form.Label htmlFor='name'>Name of Game</Form.Label>
           <Form.Control
             type='text'
@@ -163,7 +163,7 @@ const GameCreation = () => {
           <Form.Label htmlFor='army'>Opponent's Army</Form.Label>
           <Form.Control
             type='text'
-            placeholder='Stormcast Eternals'
+            placeholder='Disciples of Tzeentch'
             name='opponentarmy'
             onChange={handleInputChange}
             value={gameData.opponentarmy}
@@ -193,6 +193,7 @@ const GameCreation = () => {
         </Button>
         
       </Form>
+      <br/>
       </Container>
     </>
   );

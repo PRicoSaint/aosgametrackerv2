@@ -1,9 +1,10 @@
 import React, { useState, useEffect } from 'react';
-import {  Container, Col, Form, Button, Card, Modal, Tab, Spinner } from 'react-bootstrap';
+import {  Container, Row, Col, Form, Button, Card, Modal, Tab, Spinner } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
-
+import './GameHistory.css';
 import Auth from '../utils/auth';
 import { getMe } from '../utils/API';
+import white_warhammer from '../images/white_warhammer.svg'
 
 // import NewRound from '../components/NewRound';
 
@@ -44,8 +45,8 @@ const GameHistory = () => {
 
 // Add hammering gif here
   if (!userDataLength) {
-    return <Spinner animation="border" role="status">
-    <span className="visually-hidden">Loading...</span>
+    return <Spinner animation="border" role="status" >
+    <img src={white_warhammer} style={{width:'25px', height: '25px'}} />
   </Spinner>;
   }
 
@@ -62,11 +63,11 @@ const GameHistory = () => {
             ? `Viewing ${userData.savedGames.length} saved ${userData.savedGames.length === 1 ? 'game' : 'games'}:`
             : 'You have no saved games!'}
         </h2>
-        <Col>
+        <Row xs={1} md={2} className="g-4">
           {userData.savedGames.map((game) => {
             return (
-              <Card key={game._id} border='dark'>
-                <Card.Body>
+              <Card style={{ width: '18rem' }} className="mb-2" key={game._id} border='dark'>
+                <Card.Body className="centertext">
                   <Card.Title>{game.name}</Card.Title>
                   <p>Battleplan: {game.battleplan}</p>
                   <Card.Text>
@@ -88,7 +89,7 @@ const GameHistory = () => {
               </Card>
             );
           })}
-        </Col>
+        </Row>
       </Container>
       {/* set modal data up */}
       {/* <Modal

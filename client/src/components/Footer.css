@@ -1,0 +1,19 @@
+.DDlogo{
+    /* border: 1px solid #ddd; */
+    border-radius: 4px;
+    padding: 5px;
+    width: 100px;
+}
+.center{
+    text-align: center;
+    margin:auto;
+}
+.centerthis{
+    justify-content: center;
+}
+.spacing{
+    margin-bottom: 10px;
+}
+h6 {
+    color:aliceblue;
+}

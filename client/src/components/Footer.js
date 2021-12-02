@@ -1,33 +1,56 @@
-import React from 'react'
-import {  Container, Col, Form, Button, Row, Image } from 'react-bootstrap';
-import DDlogo from '../images/Dallas_Star1.webp';
-import prsaintlogo from '../images/prsaintlogo.png';
+import React from "react";
+import {
+  Container,
+  Col,
+  Form,
+  Button,
+  Row,
+  Image,
+  Navbar,
+} from "react-bootstrap";
+import DDlogo from "../images/Dallas_Star1.webp";
+import prsaintlogo from "../images/prsaintlogo.png";
+import "./Footer.css";
+
 export default function Footer() {
-    return (
-        <>
-            <Container>
-        <Row>
-                <Col><Image src={prsaintlogo} alt="PRSaint Logo" fluid /> </Col>
+  return (
+    <div>
+        <Navbar bg="dark" variant="dark" className="centerthis" fixed="bottom" >
+          <Row>
             <Col>
-            <Image src={DDlogo} alt="Gameclub Logo" fluid />
+              <Image
+                src={prsaintlogo}
+                className="DDlogo"
+                alt="PRSaint Logo"
+              />{" "}
             </Col>
             <Col>
-            <p>
-                App created by Esteban Santos
-            </p>
+              <Image
+                src={DDlogo}
+                className="DDlogo"
+                alt="Gameclub Logo"
+              />
             </Col>
             <Col>
-            <Form  action="https://www.thetexasmasters.com/">
-                <Button type="submit" >Texas Masters</Button>
-            </Form>
+              <h6>App created by Esteban Santos</h6>
+            
             </Col>
             <Col>
-            <Form class="feet" action="https://shrouded-waters-22536.herokuapp.com/">
-                <Button type="submit">My Other Work</Button>
-            </Form>
+              <Form action="https://www.thetexasmasters.com/">
+                <Button type="submit" className="spacing">Texas Masters</Button>
+              </Form>
+            
+              <Form
+                class="feet"
+                action="https://shrouded-waters-22536.herokuapp.com/"
+              >
+                <Button type="submit" className="spacing">My Other Work</Button>
+              </Form>
             </Col>
-            </Row>
-            </Container>
-            </>
-    )
+          </Row>
+      
+      </Navbar>
+
+    </div>
+  );
 }
