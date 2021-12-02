@@ -1,6 +1,6 @@
 {
-  "name": "googlebooks-app",
-  "version": "1.0.0",
+  "name": "aosgametracker",
+  "version": "2.0.0",
   "description": "",
   "main": "server/server.js",
   "scripts": {
