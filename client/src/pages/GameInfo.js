@@ -19,9 +19,7 @@ export default function GameInfo() {
 
     // use this to determine if `useEffect()` hook needs to run again
     const gameDataLength = Object.keys(gameData).length;
-  
-    useEffect(() => {
-      const getgameData = async () => {
+    const getgameData = async () => {
         try {
           const token = Auth.loggedIn() ? Auth.getToken() : null;
   
@@ -43,6 +41,31 @@ export default function GameInfo() {
           console.error(err);
         }
       };
+
+
+    useEffect(() => {
+    //   const getgameData = async () => {
+    //     try {
+    //       const token = Auth.loggedIn() ? Auth.getToken() : null;
+  
+    //       if (!token) {
+    //           console.log("PLEASE LOG IN");
+    //         return false;
+    //       }
+  
+    //       const response = await getGame(id);
+  
+    //       if (!response.ok) {
+    //         throw new Error('something went wrong!');
+    //       }
+  
+    //       const game = await response.json();
+    //       console.log("line 39 game data: ",game);
+    //       setGameData(game);
+    //     } catch (err) {
+    //       console.error(err);
+    //     }
+    //   };
   
       getgameData();
     }, [gameDataLength]);
@@ -74,16 +97,41 @@ export default function GameInfo() {
                   </Button>
                 </Card.Body>
               </Card>
+              <Container>
+          <h1> Saved Rounds</h1>
+        </Container>
+      <Container>
+        <h2>
+          {gameData.rounds.length
+            ? `Viewing ${gameData.rounds.length} saved ${gameData.rounds.length === 1 ? 'round' : 'rounds'}:`
+            : 'You have no saved rounds! Click the button to add a round!'}
+        </h2>
+        <Col>
+          {gameData.rounds.map((round) => {
+            return (
+              <Card key={round.roundNumber} border='dark'>
+                <Card.Body>
+                  <Card.Title>Round {round.roundNumber}</Card.Title>
+                  <p>Battle Tactic Chosen: {round.battletactic}{round.btcomplete ? "✅" : "❌" }</p>
+                  <Card.Text><ul>
+                    <li>Heroic Action chosen - Top of Round:{round.heroicactiontop}</li>
+                    <li>Heroic Action chosen - Bottom of Round:{round.heroicactionbottom}</li>
+                    <li>Victory Points scored: {round.victorypoints}</li>
+                   </ul></Card.Text>
+                </Card.Body>
+              </Card>
+            );
+          })}
+        </Col>
+      </Container>
       
             <Modal
         size='lg'
         show={showNewRound}
         onHide={() => setNewRound(false)}
+        onExiting={()=> getgameData()}
         aria-labelledby='newround-modal'>
           <Modal.Header closeButton>
-            <Modal.Title id='newround-modal'>
-            <h1>New Round Input</h1>
-            </Modal.Title>
           </Modal.Header>
           <Modal.Body>
           <NewRound handleModalClose={() => setNewRound(false)} />

@@ -10,7 +10,7 @@ const NewRound = () => {
   let history = useHistory();
 
   const { id } = useParams();
-  console.log(id);
+  // console.log(id);
   // if (!id){
   //   console.log("cannot find id of game");
   //   return false;
@@ -31,8 +31,8 @@ const [showSuccess, setShowSuccess] = useState(false);
 
 
 const handleInputChange = (event) => {
-  const { name, value, checked } = event.target;
-  setRoundForm({ ...roundData, [name]: value, btcomplete: checked });
+  const { name, value } = event.target;
+  setRoundForm({ ...roundData, [name]: value });
 };
 
 const handleFormSubmit = async (event) => {
@@ -53,7 +53,7 @@ const handleFormSubmit = async (event) => {
     event.stopPropagation();
   }
   console.log("this is roundData line 55: ",roundData);
-  console.log("this is id line 56: ",id);
+  // console.log("this is id line 56: ",id);
 
   try {
     const response = await addRound(id, roundData, token);
@@ -63,10 +63,9 @@ const handleFormSubmit = async (event) => {
     }
     else{
       setShowSuccess(true);
-  //        setTimeout(() => {  
-  //   console.log("redirecting to game history page")
-  //   history.push('/saved'); 
-  // }, 3000);
+         setTimeout(() => {  
+          setShowSuccess(false); 
+  }, 3000);
       
     }
 
@@ -138,7 +137,7 @@ const handleFormSubmit = async (event) => {
       </Form.Select>
       </Form.Group>
       <Form.Group className="mb-3">
-        <Form.Label htmlFor='army'>Battle tactic completed?</Form.Label>
+        <Form.Label htmlFor='btcomplete'>Battle tactic completed?</Form.Label>
     <Form.Check type="checkbox" name="btcomplete" checked={roundData.btcomplete} onChange={handleInputChange} label="Completed" />
     {/* <Form.Check type="checkbox" name="btcompletewithmonster" checked={roundData.btcomplete} onChange={handleInputChange} label="Completed with monster" /> */}
   </Form.Group>

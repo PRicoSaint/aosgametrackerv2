@@ -67,13 +67,13 @@ const GameHistory = () => {
                 <Card.Body>
                   <Card.Title>{game.name}</Card.Title>
                   <p>Battleplan: {game.battleplan}</p>
-                  <Card.Text><ul>
+                  <Card.Text>
                     <li>Army Played:{game.army}</li>
                     <li>Opponent:{game.opponent}</li>
                     <li>Opponent's Army:{game.opponentarmy}</li>
                     Victory?
                     <li>{game.victory == true ? 'Victory' : "Loss" }</li>
-                   </ul></Card.Text>
+                   </Card.Text>
 
                    <Link to={`/saved/${game._id}`} className="btn btn-primary">Game Stats</Link>
                   {/* <Button className='btn-block btn-info' data-id={game._id} onClick={console.log("Game stats button clicked")}>

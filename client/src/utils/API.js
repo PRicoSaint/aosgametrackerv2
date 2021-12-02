@@ -43,13 +43,19 @@ export const createGame = (gameData, token) => {
 // addRound
 export const addRound = (gameId, roundData, token) => {
   console.log("this is line 45: ",gameId, roundData);
+  let newRoundData = {...roundData};
+  if (roundData.btcomplete == 'on'){
+    newRoundData.btcomplete = true;
+  }else if(roundData.btcomplete == ''){
+    newRoundData.btcomplete = false;
+  }
   return fetch(`/api/users/games/${gameId}`, {
     method: 'PUT',
     headers: {
       'Content-Type': 'application/json',
       authorization: `Bearer ${token}`,
     },
-    body: JSON.stringify(roundData),
+    body: JSON.stringify(newRoundData),
   });
 };
 
