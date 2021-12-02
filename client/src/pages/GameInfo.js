@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import {  Container, Col, Form, Button, Card, Modal, Tab } from 'react-bootstrap';
+import {  Container, Col, Form, Button, Card, Modal, Tab, Spinner } from 'react-bootstrap';
 import { Link, useParams } from 'react-router-dom';
 
 import Auth from '../utils/auth';
@@ -72,7 +72,9 @@ export default function GameInfo() {
   
   // Add hammering gif here
     if (!gameDataLength) {
-      return <h2>LOADING...</h2>;
+      return <Spinner animation="border" role="status">
+      <span className="visually-hidden">Loading...</span>
+    </Spinner>;
     }
 
     return (

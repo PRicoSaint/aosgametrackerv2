@@ -29,9 +29,6 @@ const AppNavbar = () => {
                   <Nav.Link as={Link} to='/gamecreation'>
                     Create Game
                   </Nav.Link>
-                  <Nav.Link as={Link} to='/newround'>
-                    Add round to existing game
-                  </Nav.Link>
                   <Nav.Link onClick={Auth.logout}>Logout</Nav.Link>
                 </>
               ) : (

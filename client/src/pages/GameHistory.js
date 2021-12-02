@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import {  Container, Col, Form, Button, Card, Modal, Tab } from 'react-bootstrap';
+import {  Container, Col, Form, Button, Card, Modal, Tab, Spinner } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
 
 import Auth from '../utils/auth';
@@ -44,7 +44,9 @@ const GameHistory = () => {
 
 // Add hammering gif here
   if (!userDataLength) {
-    return <h2>LOADING...</h2>;
+    return <Spinner animation="border" role="status">
+    <span className="visually-hidden">Loading...</span>
+  </Spinner>;
   }
 
 
