@@ -7,6 +7,6 @@ html,body
     overflow-x: hidden; 
 }
 
-label, h2 {
-    color:aliceblue;
+label {
+    color:orange;
 }
