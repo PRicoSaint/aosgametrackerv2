@@ -101,6 +101,7 @@ const GameCreation = () => {
             onChange={handleInputChange}
             value={gameData.name}
             required
+            minlength="1" maxlength="20"
           />
           <Form.Control.Feedback type='invalid'>Game Name is required</Form.Control.Feedback>
         </Form.Group>
@@ -145,6 +146,7 @@ const GameCreation = () => {
             onChange={handleInputChange}
             value={gameData.army}
             required
+            minlength="1" maxlength="25"
           />
           <Form.Control.Feedback type='invalid'>Army is required!</Form.Control.Feedback>
         </Form.Group>
@@ -157,6 +159,7 @@ const GameCreation = () => {
             onChange={handleInputChange}
             value={gameData.opponent}
             required
+            minlength="1" maxlength="20"
           />
         </Form.Group>
         <Form.Group>
@@ -168,6 +171,7 @@ const GameCreation = () => {
             onChange={handleInputChange}
             value={gameData.opponentarmy}
             required
+            minlength="1" maxlength="25"
           />
         </Form.Group>
         {/* <Form.Group>

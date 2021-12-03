@@ -105,6 +105,7 @@ const handleFormSubmit = async (event) => {
             onChange={handleInputChange}
             value={roundData.roundNumber}
             required
+            min="1" max="5"
           />
           <Form.Control.Feedback type='invalid'>Round Number is required</Form.Control.Feedback>
         </Form.Group>
@@ -172,6 +173,7 @@ const handleFormSubmit = async (event) => {
             onChange={handleInputChange}
             value={roundData.victorypoints}
             required
+            min="0" max="20"
           />
           <Form.Control.Feedback type='invalid'>A number is required</Form.Control.Feedback>
         </Form.Group>
