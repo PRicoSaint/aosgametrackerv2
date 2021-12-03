@@ -6,6 +6,8 @@ const {
   addRound,
   login,
   getSingleGame,
+  getUserGames,
+  getAllGames,
 } = require('../../controllers/user-controller');
 
 // import middleware
@@ -18,6 +20,9 @@ router.route('/login').post(login);
 
 router.route('/me').get(authMiddleware, getSingleUser);
 
+router.route('/me/games').get(authMiddleware, getUserGames);
+
+
 // router.route('/games/:gameId').delete(authMiddleware, deleteBook);
 
 router.route('/games').put(authMiddleware, createGame);
@@ -25,5 +30,8 @@ router.route('/games').put(authMiddleware, createGame);
 router.route('/games/:gameId').put(authMiddleware, addRound);
 
 router.route('/games/:gameId').get(getSingleGame);
+
+router.route('/alldata').get(getAllGames);
+
 
 module.exports = router;

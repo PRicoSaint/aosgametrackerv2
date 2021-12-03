@@ -68,6 +68,23 @@ export const getGame = (gameId) => {
   });
 };
 
+export const getAllGames = () => {
+  return fetch(`/api/users/alldata`, {
+    method: 'GET',
+    headers: {
+      'Content-Type': 'application/json',
+    },
+  });
+};
+
+export const getUserGames = (token) => {
+  return fetch('/api/users/me/games', {
+    headers: {
+      'Content-Type': 'application/json',
+      authorization: `Bearer ${token}`,
+    },
+  });
+};
 
 
 // // remove saved book data for a logged in user

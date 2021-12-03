@@ -77,6 +77,7 @@ module.exports = {
     
     res.json(round);
   },
+  // Get single game information and display it.
   async getSingleGame({ params }, res) {
     console.log("req lone 81: ", params);
     const foundGame = await Game.findOne({ _id: params.gameId });
@@ -87,7 +88,35 @@ module.exports = {
 
     res.json(foundGame);
   },
+// Look up all User games
+  async getUserGames({ user = null, params }, res) {
+    const foundUser = await User.findOne({
+      $or: [{ _id: user ? user._id : params.id }, { username: params.username }],
+    }).populate('savedGames');
+    console.log("get singleUSer line 12: ", foundUser);
+    if (!foundUser) {
+      return res.status(400).json({ message: 'Cannot find a user with this id!' });
+    }
 
+    res.json(foundUser);
+  },
+// Get all Games for all users
+  async getAllGames(req, res) {
+    Game.aggregate([
+      {
+          $addFields: {
+              totalVPs: { $sum: "$rounds.victorypoints" },
+          }
+      }])
+      .then(allGames => {
+          console.log(allGames);
+          res.json(allGames)
+      })
+      .catch(({ message }) => {
+          console.log(message);
+          res.json(message);
+      });
+  },
 
 
   // save a book to a user's `savedBooks` field by adding it to the set (to prevent duplicates)

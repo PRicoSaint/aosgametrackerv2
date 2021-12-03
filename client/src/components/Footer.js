@@ -41,7 +41,6 @@ export default function Footer() {
               </Form>
             
               <Form
-                class="feet"
                 action="https://shrouded-waters-22536.herokuapp.com/"
               >
                 <Button type="submit" className="spacing">My Other Work</Button>

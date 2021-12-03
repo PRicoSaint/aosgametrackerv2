@@ -5,6 +5,7 @@ import './GameHistory.css';
 import Auth from '../utils/auth';
 import { getMe } from '../utils/API';
 import white_warhammer from '../images/white_warhammer.svg'
+import UserStats from '../components/UserStats';
 
 // import NewRound from '../components/NewRound';
 
@@ -90,6 +91,9 @@ const GameHistory = () => {
             );
           })}
         </Row>
+      </Container>
+      <Container>
+        <UserStats/>
       </Container>
       {/* set modal data up */}
       {/* <Modal
