@@ -9,9 +9,12 @@ import {
   Image,
   Table,
 } from "react-bootstrap";
+import { Link } from 'react-router-dom';
 import "./LandingPage.css";
 import Footer from "../components/Footer";
 import { getAllGames } from "../utils/API";
+import Auth from '../utils/auth';
+
 
 export default function LandingPage() {
   const [allGameData, setAllGameData] = useState({});
@@ -65,10 +68,18 @@ export default function LandingPage() {
           </tr>
         </tbody>
       </Table>
-      <h1>
-        Login to see your games and add more. Sign up to be able to add your own
-        games with round information
-      </h1>
+      {Auth.loggedIn() ? (
+                <Link to={`/gamecreation`} className="btn btn-primary" style={{marginTop: "10px",
+                  marginLeft:"30%",
+                  marginRight:"50%"}}>Game Creation</Link>
+                
+              ) : (
+                <h1 style={{color:"aliceblue"}}>
+                Login to see your games and add more. Sign up to be able to add your own
+                games with round information
+              </h1>
+              )}
+
       <img src={IDK} className="bgimage" />
       <Footer />
     </div>

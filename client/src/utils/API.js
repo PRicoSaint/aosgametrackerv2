@@ -78,7 +78,7 @@ export const getAllGames = () => {
 };
 
 export const getUserGames = (token) => {
-  return fetch('/api/users/me/games', {
+  return fetch('/api/users/mygames', {
     headers: {
       'Content-Type': 'application/json',
       authorization: `Bearer ${token}`,

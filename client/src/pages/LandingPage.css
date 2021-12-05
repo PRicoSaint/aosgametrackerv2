@@ -4,11 +4,10 @@
 
   .center {
     position: absolute;
-    top: 50%;
+    top: 60%;
     left: 50%;
     transform: translate(-50%, -50%);
     font-size: 18px;
-    color:brown;
   }
   
   .bgimage { 
@@ -21,6 +20,11 @@
   }
   .formattable {
     width: 50%;
+    margin-top: 10px;
+    margin-left:auto;
+    margin-right:auto;
+  }
+  .middle{
     margin-top: 10px;
     margin-left:auto;
     margin-right:auto;

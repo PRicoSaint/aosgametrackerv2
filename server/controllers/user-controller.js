@@ -93,12 +93,13 @@ module.exports = {
     const foundUser = await User.findOne({
       $or: [{ _id: user ? user._id : params.id }, { username: params.username }],
     }).populate('savedGames');
-    console.log("get singleUSer line 12: ", foundUser);
+    // console.log("get singleUSer line 12: ", foundUser.savedGames);
     if (!foundUser) {
       return res.status(400).json({ message: 'Cannot find a user with this id!' });
     }
-
-    res.json(foundUser);
+    let games = foundUser.savedGames;
+    // console.log(games);
+    res.json(games);
   },
 // Get all Games for all users
   async getAllGames(req, res) {

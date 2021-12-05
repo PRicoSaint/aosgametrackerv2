@@ -20,7 +20,7 @@ router.route('/login').post(login);
 
 router.route('/me').get(authMiddleware, getSingleUser);
 
-router.route('/me/games').get(authMiddleware, getUserGames);
+router.route('/mygames').get(authMiddleware, getUserGames);
 
 
 // router.route('/games/:gameId').delete(authMiddleware, deleteBook);

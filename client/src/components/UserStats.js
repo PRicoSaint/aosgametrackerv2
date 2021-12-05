@@ -41,12 +41,45 @@ export default function UserStats() {
 
     allUserGames();
   }, [allUserGamesLength]);
+// Data manipulation here (its really array manipulation with simple math lol)
+let totalGames = allUserGamesData.length;
+let winCounter = 0;
+for (let i=0;i<allUserGamesData.length;i++){
+    if(allUserGamesData[i].victory === true){
+        winCounter = winCounter+1;
+    }
+}
+
+const winLossPercent = (((winCounter)/totalGames)*100).toFixed(2);
+
+// TODO: Calculate average victory points
+// const average = arr => arr.reduce((a,b) => a + b, 0) / arr.length;
+
+// let vpArray=[];
+// for (let i=0;i<allUserGamesData.length;i++){
+//     if(allUserGamesData.rounds){
+
+//     }
+    
+//     vpArray.push(allUserGamesData[]
+// }
+
+// Most played army
+
+
+
+
+
+
+
+
+
   return (
     <div>
       <Card style={{ width: "18rem" }}>
         <Card.Header>Past Games</Card.Header>
         <ListGroup variant="flush">
-          <ListGroup.Item>Win%:</ListGroup.Item>
+          <ListGroup.Item>Win%:{winLossPercent}</ListGroup.Item>
           <ListGroup.Item>Most Played Army: </ListGroup.Item>
           <ListGroup.Item>Average Victory Points</ListGroup.Item>
           <ListGroup.Item>Most played Battleplan:</ListGroup.Item>
