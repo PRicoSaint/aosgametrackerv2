@@ -136,16 +136,20 @@ module.exports = {
   //     return res.status(400).json(err);
   //   }
   // },
-  // // remove a book from `savedBooks`
-  // async deleteBook({ user, params }, res) {
-  //   const updatedUser = await User.findOneAndUpdate(
-  //     { _id: user._id },
-  //     { $pull: { savedBooks: { bookId: params.bookId } } },
-  //     { new: true }
-  //   );
-  //   if (!updatedUser) {
-  //     return res.status(404).json({ message: "Couldn't find user with this id!" });
-  //   }
-  //   return res.json(updatedUser);
-  // },
+
+
+  // remove a game from `savedGames`
+  async deleteGame({ user, params }, res) {
+    console.log("This is line 141 params: ", params)
+    const updatedUser = await User.findOneAndUpdate(
+      { _id: user._id },
+      { $pull: { savedGames:  params.gameId  } },
+      { new: true }
+    );
+    console.log("This is updated user info: ", updatedUser);
+    if (!updatedUser) {
+      return res.status(404).json({ message: "Couldn't find game with this id!" });
+    }
+    return res.json(updatedUser);
+  },
 };

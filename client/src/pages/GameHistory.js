@@ -3,11 +3,11 @@ import {  Container, Row, Col, Form, Button, Card, Modal, Tab, Spinner } from 'r
 import { Link } from 'react-router-dom';
 import './GameHistory.css';
 import Auth from '../utils/auth';
-import { getMe } from '../utils/API';
+import { getMe, deleteGame } from '../utils/API';
 import white_warhammer from '../images/white_warhammer.svg'
 import UserStats from '../components/UserStats';
 
-// import NewRound from '../components/NewRound';
+// import deleteGame from '../components/NewRound';
 
 import { saveGameIds, getSavedGameIds } from '../utils/localStorage';
 
@@ -51,6 +51,29 @@ const GameHistory = () => {
   </Spinner>;
   }
 
+  const handleDeleteGame= async (_id) => {
+    const token = Auth.loggedIn() ? Auth.getToken() : null;
+    console.log("gameId for game: ",_id);
+    if (!token) {
+      return false;
+    }
+
+    try {
+      const response = await deleteGame(_id, token);
+
+      if (!response.ok) {
+        throw new Error('something went wrong!');
+      }
+
+      const updatedUser = await response.json();
+      console.log("This is updated User info: ", updatedUser);
+      setUserData(updatedUser);
+      // upon success, remove book's id from localStorage
+      // removegameId(gameId);
+    } catch (err) {
+      console.error(err);
+    }
+  };
 
 
   return (
@@ -80,9 +103,9 @@ const GameHistory = () => {
                    </Card.Text>
 
                    <Link to={`/saved/${game._id}`} className="btn btn-primary">Game Stats</Link>
-                  {/* <Button className='btn-block btn-info' data-id={game._id} onClick={console.log("Game stats button clicked")}>
-                    Game Stats
-                  </Button> */}
+                  <Button className='btn-block btn-danger'  onClick={() => handleDeleteGame(game._id)}>
+                    🗑
+                  </Button>
                   {/* <Button className='btn-block btn-warning' data-id={game._id} onClick={() => setNewRound(true)}>
                     Add Round
                   </Button> */}

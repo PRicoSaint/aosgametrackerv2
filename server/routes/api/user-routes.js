@@ -8,6 +8,7 @@ const {
   getSingleGame,
   getUserGames,
   getAllGames,
+  deleteGame,
 } = require('../../controllers/user-controller');
 
 // import middleware
@@ -23,7 +24,7 @@ router.route('/me').get(authMiddleware, getSingleUser);
 router.route('/mygames').get(authMiddleware, getUserGames);
 
 
-// router.route('/games/:gameId').delete(authMiddleware, deleteBook);
+router.route('/deletegame/:gameId').delete(authMiddleware, deleteGame);
 
 router.route('/games').put(authMiddleware, createGame);
 
