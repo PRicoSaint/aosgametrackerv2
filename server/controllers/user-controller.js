@@ -150,6 +150,8 @@ module.exports = {
     if (!updatedUser) {
       return res.status(404).json({ message: "Couldn't find game with this id!" });
     }
+    const deletedGame = await Game.deleteOne({id: params.gameId});
+    console.log(deletedGame);
     return res.json(updatedUser);
   },
 };
