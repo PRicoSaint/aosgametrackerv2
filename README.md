@@ -55,7 +55,7 @@ This is a web app for Warhammer Age of Sigmar tabletop Game system. Players play
 
   Screenshot:
   
-![Age of Sigmar GameTracker v2](aosgametrackerv2.gif)
+![Age of Sigmar GameTracker v2](AoSGameTrackerv2.gif)
 
   
   ## Technologies-Used:
